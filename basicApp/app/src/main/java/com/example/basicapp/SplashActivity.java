@@ -1,33 +1,33 @@
 package com.example.basicapp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 
-public class SecondActivity extends Activity {
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SplashActivity extends AppCompatActivity {
+
 
     private Button secondButton;
     private Handler handler;
     private Runnable runnable;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activty_second);
-
-        secondButton = findViewById(R.id.button);
+        setContentView(R.layout.splash_layout);
 
 
-        secondButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+
+
                 runnable = new Runnable() {
                     @Override
                     public void run() {
-                        startActivity(new Intent(SecondActivity.this,MainActivity.class));
+                        startActivity(new Intent(SplashActivity.this,MainActivity.class));
                     }
                 };
 
@@ -35,10 +35,7 @@ public class SecondActivity extends Activity {
                 handler.postDelayed(runnable,5000);
 
             }
-        });
 
-
-    }
 
     @Override
     protected void onDestroy() {
@@ -46,4 +43,6 @@ public class SecondActivity extends Activity {
         if (handler!= null && runnable!= null)
             handler.removeCallbacks(runnable);
     }
-}
+    }
+
+

@@ -5,4 +5,5 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="splash_background_color">#5456e1</color>
     <color name="primary_text_dark">#000000</color>
+    <color name="dRed">#EA1212</color>
 </resources>
