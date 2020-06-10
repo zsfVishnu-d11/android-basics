@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,7 +16,8 @@ public class SecondActivity extends Activity {
     private Button buttonBack,buttonBrowser, buttonShare;
     private Handler handler;
     private Runnable runnable;
-    TextView displayName;
+    private TextView displayName;
+    private EditText shareMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,18 +30,29 @@ public class SecondActivity extends Activity {
         buttonBack = findViewById(R.id.backButton);
         buttonBrowser = findViewById(R.id.browserButton);
         buttonShare = findViewById(R.id.shareButton);
+        shareMessage = findViewById(R.id.shareMessage);
 
         displayName.setText(secondName);
 
         buttonShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                shareIntent.putExtra(Intent.EXTRA_TEXT, " Share intent demo");
-                shareIntent.setType("text/plain");
 
-                Intent chooseShare = Intent.createChooser(shareIntent,null);
-                startActivity(chooseShare);
+                String textShare = shareMessage.getText().toString();
+
+                if (textShare.isEmpty())
+                    Toast.makeText(SecondActivity.this,"Enter some text to share",Toast.LENGTH_SHORT).show();
+
+
+                else {
+
+                    Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                    shareIntent.putExtra(Intent.EXTRA_TEXT, " Share intent demo");
+                    shareIntent.setType("text/plain");
+
+                    Intent chooseShare = Intent.createChooser(shareIntent, null);
+                    startActivity(chooseShare);
+                }
             }
         });
 

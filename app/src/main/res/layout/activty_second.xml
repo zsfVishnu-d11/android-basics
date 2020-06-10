@@ -46,7 +46,8 @@
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/browserButton" />
+        app:layout_constraintTop_toBottomOf="@id/shareMessage"
+ />
 
     <TextView
         android:id="@+id/textView2"
@@ -59,5 +60,19 @@
         app:layout_constraintBottom_toTopOf="@+id/secondName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/shareMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:hint="Enter text to share"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/browserButton"
+        android:layout_marginTop="30dp"
+        tools:layout_editor_absoluteY="292dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
