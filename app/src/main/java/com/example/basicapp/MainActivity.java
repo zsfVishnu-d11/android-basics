@@ -9,12 +9,15 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "Debug value";
 
     private Button enter;
+    private EditText editName, editPassword;
 
     private static int SPLASH_SCREEN_TIME_OUT=5000;
     @Override
@@ -27,11 +30,33 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "onCreate");
 
         enter = findViewById(R.id.enterButton);
+        editName = findViewById(R.id.editName);
+        editPassword = findViewById(R.id.editPassword);
 
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,SecondActivity.class));
+
+                String name = editName.getText().toString();
+                String pwd = editPassword.getText().toString();
+
+                if (name.isEmpty())
+                    Toast.makeText(MainActivity.this,"Enter a name",Toast.LENGTH_SHORT).show();
+
+                else if (pwd.isEmpty())
+                    Toast.makeText(MainActivity.this,"Enter a password",Toast.LENGTH_SHORT).show();
+
+                else if (!name.isEmpty() && !pwd.isEmpty()){
+
+                    Intent second = new Intent(MainActivity.this, SecondActivity.class);
+                    second.putExtra("name",name);
+                    startActivity(second);
+
+                }
+
+                else
+                    Toast.makeText(MainActivity.this, " Try again",Toast.LENGTH_SHORT).show();
+
             }
         });
 
